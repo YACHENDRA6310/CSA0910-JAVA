@@ -1,0 +1,41 @@
+import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.HashSet;
+
+public class RemoveDuplicatesFromArray {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        try {
+            System.out.print("Enter the number of elements in the array: ");
+            int n = scanner.nextInt();
+
+            int[] array = new int[n];
+
+            System.out.println("Enter the elements of the array:");
+            for (int i = 0; i < n; i++) {
+                System.out.print("Enter element" + (i + 1) + ": ");
+                array[i] = scanner.nextInt();
+            }
+
+            // Using HashSet to remove duplicates
+            HashSet<Integer> uniqueSet = new HashSet<>();
+            ArrayList<Integer> nonDuplicateList = new ArrayList<>();
+
+            for (int element : array) {
+                if (uniqueSet.add(element)) {
+                    nonDuplicateList.add(element);
+                }
+            }
+
+            System.out.println("Non-duplicate items:");
+            System.out.println(nonDuplicateList);
+
+        } catch (java.util.InputMismatchException e) {
+            System.out.println("Invalid input. Please enter valid integers.");
+        } finally {
+            scanner.close();
+        }
+    }
+}
