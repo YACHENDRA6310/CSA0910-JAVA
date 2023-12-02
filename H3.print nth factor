@@ -1,0 +1,52 @@
+import java.util.Scanner;
+
+public class FactorFinder {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Input the number
+        System.out.print("Enter a number: ");
+        int number = scanner.nextInt();
+
+        // Calculate and print the number of factors
+        int numberOfFactors = countFactors(number);
+        System.out.println("Number of factors: " + numberOfFactors);
+
+        // Input the value of n
+        System.out.print("Enter the value of n to find the nth factor: ");
+        int n = scanner.nextInt();
+
+        // Find and print the nth factor
+        int nthFactor = findNthFactor(number, n);
+        System.out.println("The " + n + "th factor is: " + nthFactor);
+
+        // Close the scanner
+        scanner.close();
+    }
+
+    // Method to count the number of factors of a given number
+    private static int countFactors(int num) {
+        int count = 0;
+        for (int i = 1; i <= num; i++) {
+            if (num % i == 0) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    // Method to find the nth factor of a given number
+    private static int findNthFactor(int num, int n) {
+        int count = 0;
+        for (int i = 1; i <= num; i++) {
+            if (num % i == 0) {
+                count++;
+                if (count == n) {
+                    return i;
+                }
+            }
+        }
+        // If n is out of range, return -1
+        return -1;
+    }
+}
